@@ -47,16 +47,16 @@ Implemented both:
 
 ### 4️⃣ Image Enhancement
 
-- Applied histogram equalisation and contrast stretching.
+- Applied histogram equalisation and gamma correction.
 - Normalisation aligned with standard video frames:
   - `mean = [0.485, 0.456, 0.406]`
   - `std = [0.229, 0.224, 0.225]`
 - Quantified impact on classification performance with and without enhancement.
 
-### 5️⃣ (Optional) End-to-End Model
+### 5️⃣ End-to-End Model
 
 - Implemented a lightweight 3D CNN for direct video classification.
-- Compared against traditional pipeline in terms of accuracy and efficiency.
+- Implemented an evaluation pipeline for determining the best combination of SVM kernel and image enhancement technique
 
 ---
 
