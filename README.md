@@ -20,7 +20,7 @@ Given a dataset containing videos across six action classes — `jump`, `run`, `
 3. Train a classifier using late fusion.
 4. Evaluate model performance on a test set.
 5. Analyse the effect of image enhancement on classification accuracy.
-6. (Optional) Design and evaluate an end-to-end HAR pipeline.
+6. Design and evaluate an end-to-end HAR pipeline.
 
 ---
 
@@ -55,21 +55,30 @@ Implemented both:
 
 ### 5️⃣ End-to-End Model
 
-- Implemented a lightweight 3D CNN for direct video classification.
-- Implemented an evaluation pipeline for determining the best combination of SVM kernel and image enhancement technique
+- Uniform sampling was performed to sample video frames.
+- Images were fed to the i3D CNN for feature extraction
+- Extracted features and corresponding labels were saved to .npy files to save compute resources on feature extraction step in the future.
+- A For loop was used to iteratively evaluate an SVM using linear, RBF and polynomial kernels.
+- The experiments were repeated using different image enhancement techniques to determine the best combination of SVM kernel and image enhancement technique.
 
 ---
 
 ## 📊 Results
 
-| Method                | Accuracy (%) |
-|----------------------|--------------|
-| Late Fusion + SVM    | XX.XX        |
-| Late Fusion + MAP    | XX.XX        |
-| With Enhancement     | ↑/↓ XX.XX    |
-| End-to-End 3D CNN    | XX.XX        |
+### Table: Effect of Image Enhancements on SVM Accuracy
 
-Sample outputs and visual results are available in the `results/` directory.
+| Image Enhancement      | Kernel     | Validation Accuracy |
+|------------------------|------------|----------------------|
+| None                   | Linear     | 0.1354               |
+| None                   | RBF        | 0.1667               |
+| None                   | Polynomial | **0.1875**           |
+| **Histogram Equalization** | Linear     | **0.2186**           |
+| Histogram Equalization | RBF        | 0.1250               |
+| Histogram Equalization | Polynomial | **0.1875**           |
+| Gamma Correction       | Linear     | 0.1354               |
+| Gamma Correction       | RBF        | 0.1667               |
+| Gamma Correction       | Polynomial | **0.1875**           |
+
 
 ---
 
@@ -79,14 +88,14 @@ Sample outputs and visual results are available in the `results/` directory.
 - OpenCV
 - NumPy, SciPy
 - Scikit-learn
-- PyTorch / TensorFlow (for CNNs)
-- Matplotlib
+- TensorFlow
+
 
 ---
 
 ## 📝 Report
 
-A detailed write-up, following the ICLR format, is available in the `report/` folder as `YourFullName_YourMatriculationNo.pdf`.
+A detailed write-up, following the ICLR format, is available in the `report/` folder.
 
 ---
 
